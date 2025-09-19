@@ -1,0 +1,42 @@
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent">
+ <ImageView
+ android:id="@+id/imageView"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:scaleType="centerCrop"
+ android:src="@drawable/a" />
+</FrameLayout>
+MainActivity.java
+package com.example.record7;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ private ImageView imageView;
+ private boolean isImage1 = true;
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ imageView = findViewById(R.id.imageView);
+ // Set an OnClickListener to toggle images
+ imageView.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ toggleImage();
+ }
+ });
+ }
+ private void toggleImage() {
+ if (isImage1) {
+ imageView.setImageResource(R.drawable.b);
+} else {
+ imageView.setImageResource(R.drawable.a);
+ }
+ isImage1 = !isImage1; // Toggle the boolean flag
+ }
